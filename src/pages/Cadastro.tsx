@@ -55,11 +55,13 @@ const Cadastro = () => {
     const payload = {
       ...data,
       valor_da_renda: Number(data.valor_da_renda),
-      visualizacao_fila: "/dashboard/operacao",
+      visualizacao_fila: "Etapa",
+      assas : 1
     };
     
+    console.log(payload)
     try {
-      const response = await fetch("http://apptnote.eastus.cloudapp.azure.com:3335/empresa", {
+      const response = await fetch("https://api.clicklava.com.br/empresa", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +69,9 @@ const Cadastro = () => {
         body: JSON.stringify(payload),
       });
 
+
       if (!response.ok) {
+        console.log(response)
         throw new Error("Erro ao realizar cadastro");
       }
 
